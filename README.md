@@ -40,8 +40,7 @@ A estrutura de diretórios é a seguinte:
 └── tests
 ```
 
-Para mais detalhes sobre o que cada camada faz, confira nossa [documentação de arquitetura](https://github.com/ylgnerbecton/weather-journey-backend/wiki/Documenta%C3%A7%C3%A3o-de-Arquitetura).
-
+Para mais detalhes sobre o que cada camada faz, confira nossa [documentação de arquitetura](https://github.com/ylgnerbecton/weather-journey/wiki/Documenta%C3%A7%C3%A3o-de-Arquitetura).
 
 ## Como começar
 
