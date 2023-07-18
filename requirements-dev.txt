@@ -1,0 +1,14 @@
+-r requirements.txt
+
+freezegun
+ipdb
+ipython
+moto[s3]
+pre-commit
+isort==5.10.1
+pytest
+pytest-asyncio
+pytest-cov
+pytest-freezegun
+pytest-httpx
+pytest-mock

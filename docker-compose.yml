@@ -1,0 +1,54 @@
+version: '3.7'
+
+services:
+  app_weather:
+    build:
+      context: .
+      dockerfile: ./.docker/app.dockerfile
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    ports:
+      - "8010:8010"
+    depends_on:
+      - db_weather
+    networks:
+      - backend_weather
+    container_name: app_weather
+    restart: unless-stopped
+
+  db_weather:
+    container_name: db_weather
+    image: mongo:4.0.4
+#    environment:
+#      - MONGO_INITDB_ROOT_USERNAME=root
+#      - MONGO_INITDB_ROOT_PASSWORD=secret
+#      - MONGO_INITDB_DATABASE=admin
+    ports:
+      - "27017:27017"
+    networks:
+      - backend_weather
+    volumes:
+      - mongodb_weather:/data/db
+#      - ./resources/custom-user.sh:/docker-entrypoint-initdb.d/custom-user.sh:ro
+    restart: on-failure
+
+  weather_bot_telegram:
+    build:
+      context: .
+      dockerfile: ./.docker/bot.dockerfile
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    networks:
+      - backend_weather
+    container_name: weather_bot_telegram
+    restart: unless-stopped
+
+networks:
+  backend_weather:
+
+volumes:
+  mongodb_weather:
